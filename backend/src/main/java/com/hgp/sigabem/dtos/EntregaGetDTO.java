@@ -1,37 +1,26 @@
 package com.hgp.sigabem.dtos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.hgp.sigabem.entities.Entrega;
 
-public class EntregaGetDTO extends EntregaInsertDTO{
+public class EntregaGetDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
 	private Double vlTotalFrete;
 	private LocalDate dataPrevistaEntrega;
-	private LocalDate dataConsulta;
+	private String cepOrigem;
+	private String cepDestino;
 	
 	public EntregaGetDTO() {
 	}
-	
-	public EntregaGetDTO(Entrega entrega) {
-		this.setId(entrega.getId());
-		this.setPeso(entrega.getPeso());
-		this.setCepOrigem(entrega.getCepOrigem());
-		this.setCepDestino(entrega.getCepDestino());
-		this.setNomeDestinatario(entrega.getNomeDestinatario());
-		this.setVlTotalFrete(entrega.getVlTotalFrete());
-		this.setDataPrevistaEntrega(entrega.getDataPrevistaEntrega());
-		this.setDataConsulta(entrega.getDataConsulta());
-	}
-	
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public EntregaGetDTO(Entrega entrega) {
+		this.vlTotalFrete = entrega.getVlTotalFrete();
+		this.dataPrevistaEntrega = entrega.getDataPrevistaEntrega();
+		this.cepOrigem = entrega.getCepOrigem();
+		this.cepDestino = entrega.getCepDestino();
 	}
 
 	public Double getVlTotalFrete() {
@@ -50,11 +39,19 @@ public class EntregaGetDTO extends EntregaInsertDTO{
 		this.dataPrevistaEntrega = dataPrevistaEntrega;
 	}
 
-	public LocalDate getDataConsulta() {
-		return dataConsulta;
+	public String getCepOrigem() {
+		return cepOrigem;
 	}
 
-	public void setDataConsulta(LocalDate dataConsulta) {
-		this.dataConsulta = dataConsulta;
+	public void setCepOrigem(String cepOrigem) {
+		this.cepOrigem = cepOrigem;
+	}
+
+	public String getCepDestino() {
+		return cepDestino;
+	}
+
+	public void setCepDestino(String cepDestino) {
+		this.cepDestino = cepDestino;
 	}
 }
